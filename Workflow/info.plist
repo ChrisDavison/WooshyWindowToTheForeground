@@ -10,18 +10,6 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>E9C3A7F5-2D8B-4F1A-B6E4-5C7D9A3F2E40</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>F2B6D8E4-9C1A-4E7F-A3D5-6B8C2E9F4A50</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>1AEA87D2-9C7F-41B2-BCFD-5977A16CA4BA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -32,12 +20,37 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>E9C3A7F5-2D8B-4F1A-B6E4-5C7D9A3F2E40</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>F2B6D8E4-9C1A-4E7F-A3D5-6B8C2E9F4A50</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>18C10997-27FE-4B40-A45A-AC97DF7EF59E</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>FA949D1A-C6D0-4D25-AD54-86D05D156CB9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>4D3EB680-7030-49E3-9311-786DB1C90D4B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C4A6E8B0-2D4F-4A6C-8E0B-4F6A8C0E2B93</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -77,6 +90,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>882D67DA-1A54-4E17-8C97-7C81093FF707</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>B66E56FA-979E-4002-B1E8-321636670A9B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FA949D1A-C6D0-4D25-AD54-86D05D156CB9</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -141,20 +167,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>E5B7D9F1-3A5C-4E7A-9C1E-5A7C9E1A3D04</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>E5B7D9F1-3A5C-4E7A-9C1E-5A7C9E1A3D04</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>C4A6E8B0-2D4F-4A6C-8E0B-4F6A8C0E2B93</string>
+				<string>4D3EB680-7030-49E3-9311-786DB1C90D4B</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -335,11 +348,11 @@
 				<key>focusedappvariablename</key>
 				<string></string>
 				<key>hotkey</key>
-				<integer>31</integer>
+				<integer>48</integer>
 				<key>hotmod</key>
-				<integer>1179648</integer>
+				<integer>1966080</integer>
 				<key>hotstring</key>
-				<string>O</string>
+				<string>⇥</string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -373,6 +386,37 @@
 			<string>882D67DA-1A54-4E17-8C97-7C81093FF707</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>48</integer>
+				<key>hotmod</key>
+				<integer>524288</integer>
+				<key>hotstring</key>
+				<string>⇥</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>B66E56FA-979E-4002-B1E8-321636670A9B</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -470,6 +514,25 @@
 			<string>F5B8C768-8813-4745-B95F-1F4ABC437BE6</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>filtered</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>E9C3A7F5-2D8B-4F1A-B6E4-5C7D9A3F2E40</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -599,6 +662,59 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"title":"AI","arg":"ChatGPT|Codex|Claude|T3 Code|Kagi"},{"title":"TV","arg":"ASMR|Tinglebay|Netflix|Bingo Brawlers|Channel 4"}]</string>
+				<key>keyword</key>
+				<string>wwf</string>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string></string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>4D3EB680-7030-49E3-9311-786DB1C90D4B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>filter_mode</key>
+					<string></string>
+					<key>filter_regex</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>C4A6E8B0-2D4F-4A6C-8E0B-4F6A8C0E2B93</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -624,78 +740,6 @@
 			<string>D4E8B2C6-7A1F-4D3E-9B5C-8E2F6A4C1B30</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>externaltriggerid</key>
-				<string>filtered</string>
-				<key>passinputasargument</key>
-				<false/>
-				<key>passvariables</key>
-				<true/>
-				<key>workflowbundleid</key>
-				<string>self</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.callexternaltrigger</string>
-			<key>uid</key>
-			<string>E9C3A7F5-2D8B-4F1A-B6E4-5C7D9A3F2E40</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>fixedorder</key>
-				<false/>
-				<key>items</key>
-				<string>[{"title":"Browsers","subtitle":"keep Safari and Chrome Windows","arg":"(?i)safari|chrome"},{"title":"Not Browsers","subtitle":"hide Safari and Chrome Windows","arg":"!(?i)safari|chrome"}]</string>
-				<key>keyword</key>
-				<string>{var:list_filters_keyword}</string>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>Regex Filters</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
-			<key>uid</key>
-			<string>E5B7D9F1-3A5C-4E7A-9C1E-5A7C9E1A3D04</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string></string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict>
-					<key>filter_mode</key>
-					<string></string>
-					<key>filter_regex</key>
-					<string>{query}</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>C4A6E8B0-2D4F-4A6C-8E0B-4F6A8C0E2B93</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -735,6 +779,13 @@ Head to the [GitHub repository](https://github.com/godbout/WooshyWindowToTheFore
 			<key>ypos</key>
 			<real>385</real>
 		</dict>
+		<key>4D3EB680-7030-49E3-9311-786DB1C90D4B</key>
+		<dict>
+			<key>xpos</key>
+			<real>255</real>
+			<key>ypos</key>
+			<real>945</real>
+		</dict>
 		<key>59EE4A1D-3BE4-4E6D-902D-0DEEA35EE294</key>
 		<dict>
 			<key>xpos</key>
@@ -756,7 +807,14 @@ Head to the [GitHub repository](https://github.com/godbout/WooshyWindowToTheFore
 			<key>xpos</key>
 			<real>255</real>
 			<key>ypos</key>
-			<real>770</real>
+			<real>685</real>
+		</dict>
+		<key>B66E56FA-979E-4002-B1E8-321636670A9B</key>
+		<dict>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>260</real>
 		</dict>
 		<key>C25CB9F4-16AD-40B9-8724-20B3105E0FF0</key>
 		<dict>
@@ -791,16 +849,7 @@ Head to the [GitHub repository](https://github.com/godbout/WooshyWindowToTheFore
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>920</real>
-		</dict>
-		<key>E5B7D9F1-3A5C-4E7A-9C1E-5A7C9E1A3D04</key>
-		<dict>
-			<key>note</key>
-			<string>one item per filter: the arg is the regex matched against App Names and Window Titles. start it with `!` to hide the matching Windows instead.</string>
-			<key>xpos</key>
-			<real>255</real>
-			<key>ypos</key>
-			<real>920</real>
+			<real>1070</real>
 		</dict>
 		<key>E93BF5EB-9369-42BE-9B90-9A45D7DF2E13</key>
 		<dict>
@@ -940,28 +989,9 @@ Head to the [GitHub repository](https://github.com/godbout/WooshyWindowToTheFore
 			<key>variable</key>
 			<string>list_excluded_windows_keyword</string>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string>wwf</string>
-				<key>placeholder</key>
-				<string></string>
-				<key>required</key>
-				<false/>
-				<key>trim</key>
-				<true/>
-			</dict>
-			<key>description</key>
-			<string></string>
-			<key>label</key>
-			<string>List Regex Filters with</string>
-			<key>type</key>
-			<string>textfield</string>
-			<key>variable</key>
-			<string>list_filters_keyword</string>
-		</dict>
 	</array>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
 	<string>3.6.0</string>
 	<key>webaddress</key>
