@@ -109,10 +109,25 @@ extension Entrance {
     // falls back to the `filter_regex` and `filter_mode` variables, which is how List Filters drive the shared
     // Script Filter, and how a filtered list gets reopened after a Window got banned from it.
     // without a mode, a regex starting with `!` hides the Windows that match, which List Filter items can use.
+    // a `filter_name` variable instead picks the regex of the List Filter item with that title, so Hotkeys can skip the List Filter.
     private static func resultsForRegexFilteredWindows() -> String {
         let arguments = CommandLine.arguments
         var pattern = (arguments.count >= 3 ? arguments[2] : ProcessInfo.processInfo.environment["filter_regex"] ?? "").precomposedStringWithCanonicalMapping
         var mode = arguments.count >= 4 ? arguments[3] : ProcessInfo.processInfo.environment["filter_mode"] ?? ""
+        
+        if pattern.isEmpty, let filterName = ProcessInfo.processInfo.environment["filter_name"], filterName.isEmpty == false {
+            guard let listFilterItemArg = listFilterItemArg(titled: filterName) else {
+                ScriptFilter.add(
+                    Item(title: "🚨️ No List Filter item is titled \"\(filterName)\" 🚨️")
+                        .subtitle("Check the Hotkey's Argument against the List Filter items")
+                        .valid(false)
+                )
+                
+                return ScriptFilter.output()
+            }
+            
+            pattern = listFilterItemArg.precomposedStringWithCanonicalMapping
+        }
         
         if mode.isEmpty, pattern.hasPrefix("!") {
             pattern.removeFirst()
@@ -284,6 +299,45 @@ kCGWindowLayer != 25
         }
         
         return windows
+    }
+    
+    // Alfred stores List Filter items as a JSON string in the Workflow's info.plist
+    private static func listFilterItemArg(titled title: String) -> String? {
+        let environment = ProcessInfo.processInfo.environment
+        let infoPlistFile: String = {
+            guard
+                let alfredPreferences = environment["alfred_preferences"],
+                let alfredWorkflowUID = environment["alfred_workflow_uid"]
+            else {
+                return "info.plist"
+            }
+            
+            return "\(alfredPreferences)/workflows/\(alfredWorkflowUID)/info.plist"
+        }()
+        
+        guard
+            let data = FileManager.default.contents(atPath: infoPlistFile),
+            let infoPlist = try? PropertyListSerialization.propertyList(from: data, format: nil) as? [String: Any],
+            let objects = infoPlist["objects"] as? [[String: Any]]
+        else {
+            return nil
+        }
+        
+        for object in objects where object["type"] as? String == "alfred.workflow.input.listfilter" {
+            guard
+                let items = (object["config"] as? [String: Any])?["items"] as? String,
+                let itemsData = items.data(using: .utf8),
+                let decodedItems = try? JSONSerialization.jsonObject(with: itemsData) as? [[String: Any]]
+            else {
+                continue
+            }
+            
+            if let item = decodedItems.first(where: { ($0["title"] as? String)?.caseInsensitiveCompare(title) == .orderedSame }) {
+                return item["arg"] as? String
+            }
+        }
+        
+        return nil
     }
     
     private static func excludedWindows() -> ExcludedWindows? {
