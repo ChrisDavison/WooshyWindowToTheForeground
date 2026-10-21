@@ -669,7 +669,7 @@
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"title":"AI","arg":"ChatGPT|Codex|Claude|T3 Code|Kagi"},{"title":"TV","arg":"ASMR|Tinglebay|Netflix|Bingo Brawlers|Channel 4"}]</string>
+				<string>[{"title":"AI","arg":"T3 Code.*|Claude|ChatGPT|Kagi Assistant"},{"title":"TV","arg":"ASMR|Tinglebay|Netflix|Bingo Brawlers|Channel 4"}]</string>
 				<key>keyword</key>
 				<string>wwf</string>
 				<key>matchmode</key>
@@ -718,15 +718,19 @@
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
-				<integer>0</integer>
+				<integer>3</integer>
+				<key>argumenttext</key>
+				<string>AI</string>
 				<key>focusedappvariable</key>
 				<false/>
 				<key>focusedappvariablename</key>
 				<string></string>
 				<key>hotkey</key>
-				<integer>0</integer>
+				<integer>40</integer>
 				<key>hotmod</key>
-				<integer>0</integer>
+				<integer>1966080</integer>
+				<key>hotstring</key>
+				<string>K</string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -849,7 +853,7 @@ Head to the [GitHub repository](https://github.com/godbout/WooshyWindowToTheFore
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>1070</real>
+			<real>965</real>
 		</dict>
 		<key>E93BF5EB-9369-42BE-9B90-9A45D7DF2E13</key>
 		<dict>
