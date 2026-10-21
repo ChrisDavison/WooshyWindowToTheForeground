@@ -14,6 +14,7 @@ struct Window {
 
 struct RegexFilter {
 
+    let pattern: String
     let regex: NSRegularExpression
     let keepsMatchingWindows: Bool
 
@@ -104,8 +105,13 @@ extension Entrance {
         return ScriptFilter.output()
     }
     
+    // `filtered <regex> [keep|hide]`, each Script Filter carrying its own regex.
+    // falls back to the `filter_regex` and `filter_mode` variables, which is how the shared Script Filter
+    // reopens the right filtered list after a Window got banned from it.
     private static func resultsForRegexFilteredWindows() -> String {
-        let pattern = (ProcessInfo.processInfo.environment["filtered_windows_regex"] ?? "").precomposedStringWithCanonicalMapping
+        let arguments = CommandLine.arguments
+        let pattern = (arguments.count >= 3 ? arguments[2] : ProcessInfo.processInfo.environment["filter_regex"] ?? "").precomposedStringWithCanonicalMapping
+        let mode = arguments.count >= 4 ? arguments[3] : ProcessInfo.processInfo.environment["filter_mode"]
 
         guard pattern.isEmpty == false else {
             return resultsForOnscreenWindowsExcludingExcludedWindowsLOL()
@@ -113,7 +119,7 @@ extension Entrance {
 
         guard let regex = try? NSRegularExpression(pattern: pattern) else {
             ScriptFilter.add(
-                Item(title: "🚨️ The regex in the Workflow Configuration is invalid 🚨️")
+                Item(title: "🚨️ The regex of this filter is invalid 🚨️")
                     .subtitle(pattern)
                     .valid(false)
             )
@@ -121,15 +127,12 @@ extension Entrance {
             return ScriptFilter.output()
         }
 
-        let keepsMatchingWindows = ProcessInfo.processInfo.environment["filtered_windows_regex_mode"] != "hide"
-
         return resultsForOnscreenWindowsExcludingExcludedWindowsLOL(
-            filteredBy: RegexFilter(regex: regex, keepsMatchingWindows: keepsMatchingWindows),
-            reopening: "filtered"
+            filteredBy: RegexFilter(pattern: pattern, regex: regex, keepsMatchingWindows: mode != "hide")
         )
     }
 
-    private static func resultsForOnscreenWindowsExcludingExcludedWindowsLOL(filteredBy regexFilter: RegexFilter? = nil, reopening externalTrigger: String = "onscreen") -> String {
+    private static func resultsForOnscreenWindowsExcludingExcludedWindowsLOL(filteredBy regexFilter: RegexFilter? = nil) -> String {
         guard let windowsToShowInAlfredResults = onscreenWindowsExcludingExcludedWindowsLOL() else {
             ScriptFilter.add(
                 Item(title: "🚨️ Oops 🚨️ Something is failing badly. The smart thing to do is to report!")
@@ -177,11 +180,26 @@ extension Entrance {
             } else if windowsToShowInAlfredResults.isEmpty {
                 ScriptFilter.add(
                     Item(title: "No Window left after applying your regex filter!")
-                        .subtitle("Check the regex in the Workflow Configuration")
+                        .subtitle(regexFilter.map { regexFilter in "\(regexFilter.keepsMatchingWindows ? "keeping" : "hiding") \(regexFilter.pattern)" } ?? "")
                         .valid(false)
                 )
             } else {
                 for window in windowsToShowInAlfredResults {
+                    let banMod = Cmd()
+                        .subtitle("Ban this Window from Alfred's Results")
+                        .arg("do")
+                        .variable(Variable(name: "windowTitle", value: window.title))
+                        .variable(Variable(name: "appName", value: window.appName))
+                        .variable(Variable(name: "appIcon", value: window.appIcon))
+                        .variable(Variable(name: "action", value: "excludeWindowFromAlfredResults"))
+                    
+                    if let regexFilter {
+                        banMod
+                            .variable(Variable(name: "reopen", value: "filtered"))
+                            .variable(Variable(name: "filter_regex", value: regexFilter.pattern))
+                            .variable(Variable(name: "filter_mode", value: regexFilter.keepsMatchingWindows ? "keep" : "hide"))
+                    }
+                    
                     ScriptFilter.add(
                         Item(title: window.title)
                             .subtitle(window.appName)
@@ -192,16 +210,7 @@ extension Entrance {
                             .variable(Variable(name: "windowTitle", value: window.title))
                             .variable(Variable(name: "appPID", value: String(window.appPID)))
                             .variable(Variable(name: "action", value: "bringWindowToForeground"))
-                            .mod(
-                                Cmd()
-                                    .subtitle("Ban this Window from Alfred's Results")
-                                    .arg("do")
-                                    .variable(Variable(name: "windowTitle", value: window.title))
-                                    .variable(Variable(name: "appName", value: window.appName))
-                                    .variable(Variable(name: "appIcon", value: window.appIcon))
-                                    .variable(Variable(name: "action", value: "excludeWindowFromAlfredResults"))
-                                    .variable(Variable(name: "reopen", value: externalTrigger))
-                            )
+                            .mod(banMod)
                     )
                 }
             }
