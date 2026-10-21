@@ -10,6 +10,18 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>E9C3A7F5-2D8B-4F1A-B6E4-5C7D9A3F2E40</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>F2B6D8E4-9C1A-4E7F-A3D5-6B8C2E9F4A50</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>1AEA87D2-9C7F-41B2-BCFD-5977A16CA4BA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -60,6 +72,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>B1F3C0A4-6E2D-4C8B-9A71-3D5E8F2A9C10</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>882D67DA-1A54-4E17-8C97-7C81093FF707</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>C25CB9F4-16AD-40B9-8724-20B3105E0FF0</key>
 		<array>
 			<dict>
@@ -73,11 +98,37 @@
 				<false/>
 			</dict>
 		</array>
+		<key>C7A2E9D1-4B3F-4E8A-8D6C-1F9B7E5A3D20</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B1F3C0A4-6E2D-4C8B-9A71-3D5E8F2A9C10</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>D093C93B-2029-42F6-A33A-24C5277ABC78</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>FA949D1A-C6D0-4D25-AD54-86D05D156CB9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D4E8B2C6-7A1F-4D3E-9B5C-8E2F6A4C1B30</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B1F3C0A4-6E2D-4C8B-9A71-3D5E8F2A9C10</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -401,6 +452,20 @@
 				<array>
 					<dict>
 						<key>inputstring</key>
+						<string>{var:reopen}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>filtered</string>
+						<key>outputlabel</key>
+						<string></string>
+						<key>uid</key>
+						<string>F2B6D8E4-9C1A-4E7F-A3D5-6B8C2E9F4A50</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
 						<string>{var:action}</string>
 						<key>matchcasesensitive</key>
 						<false/>
@@ -438,6 +503,118 @@
 			<string>alfred.workflow.trigger.external</string>
 			<key>uid</key>
 			<string>59EE4A1D-3BE4-4E6D-902D-0DEEA35EE294</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>{var:list_filtered_windows_keyword}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>./resources/binaries/WooshyWindowToTheForeground filtered</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string></string>
+				<key>type</key>
+				<integer>11</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>B1F3C0A4-6E2D-4C8B-9A71-3D5E8F2A9C10</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>availableviaurlhandler</key>
+				<false/>
+				<key>triggerid</key>
+				<string>filtered</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>C7A2E9D1-4B3F-4E8A-8D6C-1F9B7E5A3D20</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>D4E8B2C6-7A1F-4D3E-9B5C-8E2F6A4C1B30</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>filtered</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>E9C3A7F5-2D8B-4F1A-B6E4-5C7D9A3F2E40</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -493,6 +670,15 @@ Head to the [GitHub repository](https://github.com/godbout/WooshyWindowToTheFore
 			<key>ypos</key>
 			<real>225</real>
 		</dict>
+		<key>B1F3C0A4-6E2D-4C8B-9A71-3D5E8F2A9C10</key>
+		<dict>
+			<key>note</key>
+			<string>regex pre-filtered onscreen Windows. `zsh` like the excluded one coz it needs the `filtered` argument.</string>
+			<key>xpos</key>
+			<real>255</real>
+			<key>ypos</key>
+			<real>770</real>
+		</dict>
 		<key>C25CB9F4-16AD-40B9-8724-20B3105E0FF0</key>
 		<dict>
 			<key>xpos</key>
@@ -500,12 +686,26 @@ Head to the [GitHub repository](https://github.com/godbout/WooshyWindowToTheFore
 			<key>ypos</key>
 			<real>85</real>
 		</dict>
+		<key>C7A2E9D1-4B3F-4E8A-8D6C-1F9B7E5A3D20</key>
+		<dict>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>700</real>
+		</dict>
 		<key>D093C93B-2029-42F6-A33A-24C5277ABC78</key>
 		<dict>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
 			<real>140</real>
+		</dict>
+		<key>D4E8B2C6-7A1F-4D3E-9B5C-8E2F6A4C1B30</key>
+		<dict>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>845</real>
 		</dict>
 		<key>E93BF5EB-9369-42BE-9B90-9A45D7DF2E13</key>
 		<dict>
@@ -515,6 +715,13 @@ Head to the [GitHub repository](https://github.com/godbout/WooshyWindowToTheFore
 			<real>850</real>
 			<key>ypos</key>
 			<real>30</real>
+		</dict>
+		<key>E9C3A7F5-2D8B-4F1A-B6E4-5C7D9A3F2E40</key>
+		<dict>
+			<key>xpos</key>
+			<real>740</real>
+			<key>ypos</key>
+			<real>535</real>
 		</dict>
 		<key>F5B8C768-8813-4745-B95F-1F4ABC437BE6</key>
 		<dict>
@@ -611,6 +818,74 @@ Head to the [GitHub repository](https://github.com/godbout/WooshyWindowToTheFore
 			<string>textfield</string>
 			<key>variable</key>
 			<string>list_excluded_windows_keyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>wwf</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>List Regex Filtered Windows with</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>list_filtered_windows_keyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>placeholder</key>
+				<string>(?i)safari|chrome</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Matched against both the App Name and the Window Title. Use (?i) at the start for case insensitive matching. Leave empty to list all Windows.</string>
+			<key>label</key>
+			<string>Regex Filter</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>filtered_windows_regex</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>keep</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>keep only the Windows that match</string>
+						<string>keep</string>
+					</array>
+					<array>
+						<string>hide the Windows that match</string>
+						<string>hide</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Windows matching the Regex Filter</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>filtered_windows_regex_mode</string>
 		</dict>
 	</array>
 	<key>version</key>
