@@ -89,6 +89,10 @@ extension Workflow {
         guard let windowNumber = Int(ProcessInfo.processInfo.environment["windowNumber"] ?? "") else { return false }
         guard let appPID = Int(ProcessInfo.processInfo.environment["appPID"] ?? "") else { return false }
         
+        return bringWindowToForeground(windowNumber: windowNumber, appPID: appPID)
+    }
+    
+    static func bringWindowToForeground(windowNumber: Int, appPID: Int) -> Bool {
         let axApplication = AXUIElementCreateApplication(pid_t(appPID))
               
         var axWindows: AnyObject?

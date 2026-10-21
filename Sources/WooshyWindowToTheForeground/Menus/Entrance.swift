@@ -190,6 +190,13 @@ extension Entrance {
                         .valid(false)
                 )
             } else {
+                // Alfred can't pick a Result on its own, so a single Window gets brought to the foreground right away.
+                // Alfred loses focus and goes away in the process. the Result is still listed in case it doesn't.
+                let autoSelectSingleWindow = (ProcessInfo.processInfo.environment["auto_select_single_window"] == "1" ? true : false)
+                if autoSelectSingleWindow, windowsToShowInAlfredResults.count == 1, let window = windowsToShowInAlfredResults.first {
+                    _ = Workflow.bringWindowToForeground(windowNumber: Int(window.number), appPID: Int(window.appPID))
+                }
+                
                 for window in windowsToShowInAlfredResults {
                     let banMod = Cmd()
                         .subtitle("Ban this Window from Alfred's Results")
