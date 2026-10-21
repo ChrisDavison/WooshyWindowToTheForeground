@@ -85,6 +85,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>A7C9E1B3-5D7F-4B9C-8E2A-6C8E0A2C4D15</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E9C3A7F5-2D8B-4F1A-B6E4-5C7D9A3F2E40</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>B1F3C0A4-6E2D-4C8B-9A71-3D5E8F2A9C10</key>
 		<array>
 			<dict>
@@ -167,7 +180,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>4D3EB680-7030-49E3-9311-786DB1C90D4B</string>
+				<string>A7C9E1B3-5D7F-4B9C-8E2A-6C8E0A2C4D15</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -745,6 +758,30 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>filter_mode</key>
+					<string></string>
+					<key>filter_name</key>
+					<string>{query}</string>
+					<key>filter_regex</key>
+					<string></string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>A7C9E1B3-5D7F-4B9C-8E2A-6C8E0A2C4D15</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>## Switch macOS Windows with Alfred
@@ -803,6 +840,15 @@ Head to the [GitHub repository](https://github.com/godbout/WooshyWindowToTheFore
 			<real>470</real>
 			<key>ypos</key>
 			<real>225</real>
+		</dict>
+		<key>A7C9E1B3-5D7F-4B9C-8E2A-6C8E0A2C4D15</key>
+		<dict>
+			<key>note</key>
+			<string>Hotkeys straight to a filtered list: their Argument is the title of the List Filter item whose regex to use.</string>
+			<key>xpos</key>
+			<real>470</real>
+			<key>ypos</key>
+			<real>1070</real>
 		</dict>
 		<key>B1F3C0A4-6E2D-4C8B-9A71-3D5E8F2A9C10</key>
 		<dict>
