@@ -897,6 +897,32 @@ Head to the [GitHub repository](https://github.com/godbout/WooshyWindowToTheFore
 			<key>config</key>
 			<dict>
 				<key>default</key>
+				<string>0</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>list it as usual</string>
+						<string>0</string>
+					</array>
+					<array>
+						<string>bring it to the foreground right away</string>
+						<string>1</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>Applies to the Onscreen and the Regex Filtered lists, before anything gets typed in Alfred.</string>
+			<key>label</key>
+			<string>When only one Window is listed</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>auto_select_single_window</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
 				<string>-ww</string>
 				<key>placeholder</key>
 				<string></string>
