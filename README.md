@@ -30,7 +30,7 @@ Alfred can switch apps but not windows within apps, nor windows without apps. So
 * optionally brings the window to the foreground right away when it's the only one listed (off by default, in the Workflow Configuration)
 * Alfred results order follows windows order: first result is most frontmost, last result is most backmost (LOL)
 * ban windows you never wanna see in Alfred's Results (and unban them if needed)
-* pre-filter the list with as many regexes as you want: `wwf` (or its Hotkey) lists your filters, pick one and only the windows whose app name or title match are listed. Filters are the items of the `wwf` List Filter, each with the regex as its arg. Start the regex with `!` to hide the matching windows instead, and with `(?i)` for case insensitive matching. A Script Filter can also carry its own regex: `./resources/binaries/WooshyWindowToTheForeground filtered 'ChatGPT|T3' keep` (or `hide`)
+* pre-filter the list with as many regexes as you want: `wwf` (or its Hotkey) lists your filters, pick one and only the windows whose app name or title match are listed. Filters are the items of the `wwf` List Filter, each with the regex as its arg. Start the regex with `!` to hide the matching windows instead, and with `(?i)` for case insensitive matching. To go straight to one filter, give a Hotkey the filter's title as its Argument and connect it to the `filter_name` Arg and Vars (Hyper+K does it for `AI`). A Script Filter can also carry its own regex: `./resources/binaries/WooshyWindowToTheForeground filtered 'ChatGPT|T3' keep` (or `hide`)
 * window match is 100% accurate
 * DID I SAY FAST???
 
