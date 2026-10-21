@@ -8,21 +8,43 @@ struct Window {
     let appPID: pid_t
     let appName: String
     let appIcon: String
-    
+
+}
+
+
+struct RegexFilter {
+
+    let regex: NSRegularExpression
+    let keepsMatchingWindows: Bool
+
+    // a Window matches if the regex finds a match in either its App Name or its Title
+    func allows(_ window: Window) -> Bool {
+        let matches = [window.appName, window.title].contains { string in
+            let precomposedString = string.precomposedStringWithCanonicalMapping
+
+            return regex.firstMatch(in: precomposedString, range: NSRange(precomposedString.startIndex..., in: precomposedString)) != nil
+        }
+
+        return matches == keepsMatchingWindows
+    }
+
 }
 
 
 class Entrance {
-    
+
     static let shared = Entrance()
-    
+
     private init() {}
-    
-    
+
+
     static func scriptFilter() -> String {
-        if argument == "excluded" {
+        switch argument {
+        case "excluded":
             return resultsForExcludedWindows()
-        } else {
+        case "filtered":
+            return resultsForRegexFilteredWindows()
+        default:
             return resultsForOnscreenWindowsExcludingExcludedWindowsLOL()
         }
     }
@@ -82,7 +104,32 @@ extension Entrance {
         return ScriptFilter.output()
     }
     
-    private static func resultsForOnscreenWindowsExcludingExcludedWindowsLOL() -> String {
+    private static func resultsForRegexFilteredWindows() -> String {
+        let pattern = (ProcessInfo.processInfo.environment["filtered_windows_regex"] ?? "").precomposedStringWithCanonicalMapping
+
+        guard pattern.isEmpty == false else {
+            return resultsForOnscreenWindowsExcludingExcludedWindowsLOL()
+        }
+
+        guard let regex = try? NSRegularExpression(pattern: pattern) else {
+            ScriptFilter.add(
+                Item(title: "🚨️ The regex in the Workflow Configuration is invalid 🚨️")
+                    .subtitle(pattern)
+                    .valid(false)
+            )
+
+            return ScriptFilter.output()
+        }
+
+        let keepsMatchingWindows = ProcessInfo.processInfo.environment["filtered_windows_regex_mode"] != "hide"
+
+        return resultsForOnscreenWindowsExcludingExcludedWindowsLOL(
+            filteredBy: RegexFilter(regex: regex, keepsMatchingWindows: keepsMatchingWindows),
+            reopening: "filtered"
+        )
+    }
+
+    private static func resultsForOnscreenWindowsExcludingExcludedWindowsLOL(filteredBy regexFilter: RegexFilter? = nil, reopening externalTrigger: String = "onscreen") -> String {
         guard let windowsToShowInAlfredResults = onscreenWindowsExcludingExcludedWindowsLOL() else {
             ScriptFilter.add(
                 Item(title: "🚨️ Oops 🚨️ Something is failing badly. The smart thing to do is to report!")
@@ -116,14 +163,22 @@ extension Entrance {
             }
         } else {
             let filterOutFocusedWindow = (ProcessInfo.processInfo.environment["filter_out_focused_window"] == "1" ? true : false)
-            let windowsToShowInAlfredResults = filterOutFocusedWindow ? removeCurrentlyFocusedWindow(from: windowsToShowInAlfredResults) : windowsToShowInAlfredResults
-            
-            if windowsToShowInAlfredResults.isEmpty {
+            let windowsWithoutFocusedWindow = filterOutFocusedWindow ? removeCurrentlyFocusedWindow(from: windowsToShowInAlfredResults) : windowsToShowInAlfredResults
+            // the regex filter has to come after removing the Focused Window as that one is detected by being the first of the whole list
+            let windowsToShowInAlfredResults = regexFilter.map { regexFilter in windowsWithoutFocusedWindow.filter(regexFilter.allows) } ?? windowsWithoutFocusedWindow
+
+            if windowsWithoutFocusedWindow.isEmpty {
                 ScriptFilter.add(
                     Item(title: "The only visible Window is the one you're already on!")
                         .subtitle("Press ↵ to go back to it")
                         .arg("do")
                         .variable(Variable(name: "action", value: "nothing"))
+                )
+            } else if windowsToShowInAlfredResults.isEmpty {
+                ScriptFilter.add(
+                    Item(title: "No Window left after applying your regex filter!")
+                        .subtitle("Check the regex in the Workflow Configuration")
+                        .valid(false)
                 )
             } else {
                 for window in windowsToShowInAlfredResults {
@@ -145,6 +200,7 @@ extension Entrance {
                                     .variable(Variable(name: "appName", value: window.appName))
                                     .variable(Variable(name: "appIcon", value: window.appIcon))
                                     .variable(Variable(name: "action", value: "excludeWindowFromAlfredResults"))
+                                    .variable(Variable(name: "reopen", value: externalTrigger))
                             )
                     )
                 }
