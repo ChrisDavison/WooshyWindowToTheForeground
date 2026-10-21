@@ -72,6 +72,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>A3C5E7F9-1B2D-4E6F-8A0C-2D4F6B8E0A60</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>882D67DA-1A54-4E17-8C97-7C81093FF707</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>B1F3C0A4-6E2D-4C8B-9A71-3D5E8F2A9C10</key>
 		<array>
 			<dict>
@@ -128,7 +141,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>B1F3C0A4-6E2D-4C8B-9A71-3D5E8F2A9C10</string>
+				<string>A3C5E7F9-1B2D-4E6F-8A0C-2D4F6B8E0A60</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -522,7 +535,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>{var:list_filtered_windows_keyword}</string>
+				<string></string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -607,7 +620,7 @@
 				<key>passinputasargument</key>
 				<false/>
 				<key>passvariables</key>
-				<false/>
+				<true/>
 				<key>workflowbundleid</key>
 				<string>self</string>
 			</dict>
@@ -617,6 +630,55 @@
 			<string>E9C3A7F5-2D8B-4F1A-B6E4-5C7D9A3F2E40</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>wwf</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>./resources/binaries/WooshyWindowToTheForeground filtered '(?i)safari|chrome' keep</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Windows matching (?i)safari|chrome</string>
+				<key>type</key>
+				<integer>11</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>A3C5E7F9-1B2D-4E6F-8A0C-2D4F6B8E0A60</string>
+			<key>version</key>
+			<integer>3</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -670,10 +732,19 @@ Head to the [GitHub repository](https://github.com/godbout/WooshyWindowToTheFore
 			<key>ypos</key>
 			<real>225</real>
 		</dict>
+		<key>A3C5E7F9-1B2D-4E6F-8A0C-2D4F6B8E0A60</key>
+		<dict>
+			<key>note</key>
+			<string>regex filtered Windows. duplicate me for another filter: change the keyword and the regex in the script (`filtered '&lt;regex&gt;' keep|hide`).</string>
+			<key>xpos</key>
+			<real>255</real>
+			<key>ypos</key>
+			<real>920</real>
+		</dict>
 		<key>B1F3C0A4-6E2D-4C8B-9A71-3D5E8F2A9C10</key>
 		<dict>
 			<key>note</key>
-			<string>regex pre-filtered onscreen Windows. `zsh` like the excluded one coz it needs the `filtered` argument.</string>
+			<string>reopens a regex filtered list after banning a Window from it, using the `filter_regex` and `filter_mode` variables passed along. no keyword on purpose.</string>
 			<key>xpos</key>
 			<real>255</real>
 			<key>ypos</key>
@@ -818,74 +889,6 @@ Head to the [GitHub repository](https://github.com/godbout/WooshyWindowToTheFore
 			<string>textfield</string>
 			<key>variable</key>
 			<string>list_excluded_windows_keyword</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string>wwf</string>
-				<key>placeholder</key>
-				<string></string>
-				<key>required</key>
-				<false/>
-				<key>trim</key>
-				<true/>
-			</dict>
-			<key>description</key>
-			<string></string>
-			<key>label</key>
-			<string>List Regex Filtered Windows with</string>
-			<key>type</key>
-			<string>textfield</string>
-			<key>variable</key>
-			<string>list_filtered_windows_keyword</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string></string>
-				<key>placeholder</key>
-				<string>(?i)safari|chrome</string>
-				<key>required</key>
-				<false/>
-				<key>trim</key>
-				<true/>
-			</dict>
-			<key>description</key>
-			<string>Matched against both the App Name and the Window Title. Use (?i) at the start for case insensitive matching. Leave empty to list all Windows.</string>
-			<key>label</key>
-			<string>Regex Filter</string>
-			<key>type</key>
-			<string>textfield</string>
-			<key>variable</key>
-			<string>filtered_windows_regex</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string>keep</string>
-				<key>pairs</key>
-				<array>
-					<array>
-						<string>keep only the Windows that match</string>
-						<string>keep</string>
-					</array>
-					<array>
-						<string>hide the Windows that match</string>
-						<string>hide</string>
-					</array>
-				</array>
-			</dict>
-			<key>description</key>
-			<string></string>
-			<key>label</key>
-			<string>Windows matching the Regex Filter</string>
-			<key>type</key>
-			<string>popupbutton</string>
-			<key>variable</key>
-			<string>filtered_windows_regex_mode</string>
 		</dict>
 	</array>
 	<key>version</key>
