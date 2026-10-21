@@ -106,12 +106,18 @@ extension Entrance {
     }
     
     // `filtered <regex> [keep|hide]`, each Script Filter carrying its own regex.
-    // falls back to the `filter_regex` and `filter_mode` variables, which is how the shared Script Filter
-    // reopens the right filtered list after a Window got banned from it.
+    // falls back to the `filter_regex` and `filter_mode` variables, which is how List Filters drive the shared
+    // Script Filter, and how a filtered list gets reopened after a Window got banned from it.
+    // without a mode, a regex starting with `!` hides the Windows that match, which List Filter items can use.
     private static func resultsForRegexFilteredWindows() -> String {
         let arguments = CommandLine.arguments
-        let pattern = (arguments.count >= 3 ? arguments[2] : ProcessInfo.processInfo.environment["filter_regex"] ?? "").precomposedStringWithCanonicalMapping
-        let mode = arguments.count >= 4 ? arguments[3] : ProcessInfo.processInfo.environment["filter_mode"]
+        var pattern = (arguments.count >= 3 ? arguments[2] : ProcessInfo.processInfo.environment["filter_regex"] ?? "").precomposedStringWithCanonicalMapping
+        var mode = arguments.count >= 4 ? arguments[3] : ProcessInfo.processInfo.environment["filter_mode"] ?? ""
+        
+        if mode.isEmpty, pattern.hasPrefix("!") {
+            pattern.removeFirst()
+            mode = "hide"
+        }
 
         guard pattern.isEmpty == false else {
             return resultsForOnscreenWindowsExcludingExcludedWindowsLOL()
